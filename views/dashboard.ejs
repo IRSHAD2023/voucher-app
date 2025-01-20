@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    <h1>Welcome to the Dashboard, <%= user %></h1>
+    <button><a href="/voucher/generateQRCode">Generate QR Code</a></button>
+    <ul>
+      <% vouchers.forEach(function(voucher) { %>
+        <li>
+          <div>
+            <strong>Voucher Code:</strong> <%= voucher.code %><br>
+            <strong>Generated Date:</strong> <%= voucher.generated_date %><br>
+            <strong>Expiry Date:</strong> <%= voucher.expiry_date %>
+          </div>
+          <a href="/voucher/generatePDF/<%= voucher.code %>">Download PDF</a>
+        </li>
+      <% }); %>
+    </ul>
+  </div>
+</body>
+</html>
